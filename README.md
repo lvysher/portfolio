@@ -40,6 +40,7 @@ The website was optimized to achieve high scores in:
 * SEO
 
 Target Lighthouse score: **90+** across all categories.
+
 <img width="664" height="232" alt="Screenshot 2026-06-08 191844" src="https://github.com/user-attachments/assets/465df189-1793-42d0-ba11-352ce0b91770" />
 
 ## Outcome
