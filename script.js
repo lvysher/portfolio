@@ -58,3 +58,47 @@ const observer = new IntersectionObserver((entries) => {
 
 // Tell the observer to watch each reveal element.
 revealItems.forEach((item) => observer.observe(item));
+
+const buttons = document.querySelectorAll(".filter-btn");
+const cards = document.querySelectorAll(".project-card");
+const count = document.getElementById("count");
+
+buttons.forEach(button => {
+  button.addEventListener("click", () => {
+
+    buttons.forEach(btn =>
+      btn.classList.remove("active")
+    );
+
+    button.classList.add("active");
+
+    const filter = button.dataset.filter;
+
+    let visible = 0;
+
+    cards.forEach(card => {
+
+      if (
+        filter === "all" ||
+        card.dataset.category.includes(filter)
+      ) {
+        card.style.display = "flex";
+
+        setTimeout(() => {
+          card.style.opacity = "1";
+        }, 10);
+
+        visible++;
+      }
+      else {
+        card.style.opacity = "0";
+
+        setTimeout(() => {
+          card.style.display = "none";
+        }, 300);
+      }
+    });
+
+    count.textContent = visible;
+  });
+});

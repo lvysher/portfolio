@@ -513,3 +513,48 @@ ul {
   margin: var(--s16) 0;
   background: var(--card);
 }
+
+/* FILTER BAR */
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s12);
+  margin-bottom: var(--s24);
+  align-items: center;
+}
+
+.filter-btn {
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--ink);
+  padding: var(--s8) var(--s16);
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--primary);
+  color: white;
+}
+
+.project-count {
+  margin-left: auto;
+  color: var(--ink-muted);
+  font-size: var(--cap);
+}
+
+/* FADE ANIMATION */
+
+.project-card {
+  transition: opacity 0.3s ease,
+              transform 0.3s ease;
+}
+
+.project-card.hide {
+  opacity: 0;
+  transform: scale(0.95);
+  display: none;
+}
