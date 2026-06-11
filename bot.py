@@ -1,6 +1,8 @@
 import requests 
 from datetime import date
-
+import smtplib
+import os
+from email.mime.text import MIMEText
 
 # -- FUNCTION 1: Weather
 
@@ -53,6 +55,23 @@ def build_summary():
 """
     return summary
 
+#--EMAIL
+def send_email(summary_text):
+    sender = os.environ.get("EMAIL_SENDER")
+    password = os.environ.get("EMAIL_PASSWORD")
+    receiver = os.environ.get("EMAIL_RECEIVER")
+
+    msg = MIMEText(summary_text)
+    msg["Subject"] = "Pulse - Daily Summary"
+    msg["From"] = sender
+    msg["To"] = receiver
+
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+        server.login(sender, password)
+        server.send_message(msg)
+
+    print("Email sent.")
+
 # -- FUNCTION 4: Run everything
 
 def run():
@@ -63,6 +82,7 @@ def run():
     # Save to a file (uploaded as a downloadable artifact by the workflow) 
     with open("daily_summary.txt", "w", encoding="utf-8") as f: 
         f.write(summary)
+    send_email(summary)
     print("Pulse ran successfully.")
 
 # -- Entry point guard
