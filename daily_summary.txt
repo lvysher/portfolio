@@ -5,8 +5,10 @@
 =====================================
 
   WEATHER 
-    Thiruvananthapuram: 🌧️  +29°C
+    Thiruvananthapuram: 🌦️  +26°C
   TODAY'S QUOTE 
-    "The glow of one warm thought is to me worth more than money." - Thomas Jefferson
+    "He who permits himself to tell a lie once, finds it much easier to do it the second time." - Thomas Jefferson
+  HISTORY FACT
+    173: Marcomannic Wars: The Roman army in Moravia is encircled by the Quadi, who have broken the peace treaty (171). In a violent thunderstorm emperor Marcus Aurelius defeats and subdues them in the so-called "miracle of the rain".
 
 =====================================

@@ -4,7 +4,7 @@ import smtplib
 import os
 from email.mime.text import MIMEText
 
-# -- FUNCTION 1: Weather
+# -- FUNCTION : Weather
 
 def get_weather(city="Thiruvananthapuram"):
      """Fetch today's weather as a one-line text summary.""" 
@@ -16,7 +16,7 @@ def get_weather(city="Thiruvananthapuram"):
      except Exception as e: 
         return f"Weather unavailable ({e})"
 
-#- FUNCTION 2: Quote
+#- FUNCTION : Quote
 
 def get_quote():
     """Fetch a random motivational quote from ZenQuotes.""" 
@@ -31,14 +31,26 @@ def get_quote():
     except Exception as e: 
         return f"Quote unavailable ({e})"
     
-#--FUNCTION 3: Build the summary
+#--FUNCTION : This day in history
+def get_history_fact():
+    try:
+        response = requests.get(
+            "https://history.muffinlabs.com/date"
+        )
+        data = response.json()
+        event = data["data"]["Events"][0]
+        return f"{event['year']}: {event['text']}"
+    except Exception as e:
+        return f"History fact unavailable ({e})"
+    
+#--FUNCTION : Build the summary
 
 def build_summary():
     """Assemble the full daily summary from all data sources. """
     today = date.today().strftime("%A, %d %B %Y") # e.g. Monday, 09 June 2026
     weather = get_weather()
     quote = get_quote()
-
+    history = get_history_fact()
     # Triple-quoted strings span multiple lines great for formatted output
     summary = f"""
 =====================================
@@ -50,6 +62,8 @@ def build_summary():
     {weather}
   TODAY'S QUOTE 
     {quote}
+  HISTORY FACT
+    {history}
 
 =====================================
 """
